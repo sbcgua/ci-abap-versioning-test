@@ -1,5 +1,5 @@
 #!/bin/bash
-echo "Detecting version change"
+echo "Detecting version change ..."
 
 VERSION_FILE=src/zif_abapgit_version.intf.abap
 
