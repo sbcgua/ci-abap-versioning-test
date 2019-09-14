@@ -1,11 +1,12 @@
-language: node_js
-node_js:
-  - "10"
+language: minimal
+#language: node_js
+#node_js:
+#  - "12"
 notifications:
   email: false
 script:
   - echo Hello
-  - bash ./script.sh
+  - ./script.sh
 deploy:
   provider: script
   script: ./script.sh

@@ -32,6 +32,13 @@ fi
 echo "version change detected [$VERSION_BEFORE > $VERSION_AFTER], creating a new tag ..."
 TAG="v$VERSION_AFTER"
 
+# DEPLOY
+
+openssl aes-256-cbc -K $encrypted_d04247868aac_key -iv $encrypted_d04247868aac_iv -in deploy-key.enc -out deploy-key -d
+chmod 600 deploy-key
+eval $(ssh-agent -s)
+ssh-add deploy-key
+
 git config user.email "builds@travis-ci.com"
 git config user.name "Travis CI"
 git tag $TAG || exit 1
