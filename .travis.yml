@@ -6,10 +6,9 @@ notifications:
   email: false
 script:
   - echo Hello
-  - ./script.sh
 deploy:
   provider: script
-  script: ./script.sh
+  script: ./deploy-release-tag.sh
   skip_cleanup: true
   on:
     branch: master
