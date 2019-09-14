@@ -1,4 +1,6 @@
 #!/bin/bash
+echo "Detecting version change"
+
 VERSION_FILE=src/zif_abapgit_version.intf.abap
 
 git diff-tree --no-commit-id --name-only -r HEAD | grep $VERSION_FILE > /dev/null 2>&1
@@ -29,8 +31,8 @@ if [ $VERSION_BEFORE = $VERSION_AFTER ]; then
     exit 0
 fi
 
-echo "version change detected [$VERSION_BEFORE > $VERSION_AFTER], creating a new tag ..."
 TAG="v$VERSION_AFTER"
+echo "version change detected [$VERSION_BEFORE > $VERSION_AFTER], creating a new tag $TAG ..."
 
 # DEPLOY
 
