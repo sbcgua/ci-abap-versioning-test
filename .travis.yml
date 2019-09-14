@@ -5,6 +5,7 @@ notifications:
   email: false
 script:
   - echo Hello
+  - bash ./script.sh
 deploy:
   provider: script
   script: ./script.sh
