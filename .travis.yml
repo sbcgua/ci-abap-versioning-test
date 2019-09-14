@@ -3,6 +3,8 @@ node_js:
   - "10"
 notifications:
   email: false
+script:
+  - echo Hello
 deploy:
   provider: script
   script: ./script.sh
