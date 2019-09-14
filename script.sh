@@ -29,7 +29,7 @@ if [ $VERSION_BEFORE = $VERSION_AFTER ]; then
     exit 0
 fi
 
-echo "version change detected [$(VERSION_BEFORE) > $(VERSION_AFTER)], creating a new tag ..."
+echo "version change detected [$VERSION_BEFORE > $VERSION_AFTER], creating a new tag ..."
 TAG="v$VERSION_AFTER"
 
 # DEPLOY
@@ -43,7 +43,9 @@ git config user.email "builds@travis-ci.com"
 git config user.name "Travis CI"
 
 REPO_PATH=git remote -v | grep -m1 '^origin' | sed -Ene 's#.*(https://[^/]+/([^/]+/[^/.]+)).*#\2#p'
-git remote set-url origin "git@github.com:$(REPO_PATH).git"
+REPO_SSH_URL="git@github.com:$REPO_PATH.git"
+echo "Pushing to $REPO_SSH_URL"
+git remote set-url origin $REPO_SSH_URL
 
 git tag $TAG || exit 1
 git push origin $TAG || exit 1
