@@ -1,9 +1,4 @@
 #!/bin/bash
-
-git remote -v
-git remote -v | grep -m1 '^origin'
-git remote -v | grep -m1 '^origin' | sed -Ene 's#.*(https://[^/]+/([^/]+/[^/.]+)).*#\2#p'
-
 VERSION_FILE=src/zif_abapgit_version.intf.abap
 
 git diff-tree --no-commit-id --name-only -r HEAD | grep $VERSION_FILE > /dev/null 2>&1
@@ -12,7 +7,7 @@ if [ $? -ne 0 ]; then
     exit 0
 fi
 
-VERSION_DIFF=`git diff HEAD^:$VERSION_FILE HEAD:$VERSION_FILE`
+VERSION_DIFF=$(git diff HEAD^:$VERSION_FILE HEAD:$VERSION_FILE)
 
 echo "$VERSION_DIFF" | grep gc_abap_version > /dev/null 2>&1
 if [ $? -ne 0 ]; then
@@ -47,7 +42,7 @@ ssh-add deploy-key
 git config user.email "builds@travis-ci.com"
 git config user.name "Travis CI"
 
-REPO_PATH=git remote -v | grep -m1 '^origin' | sed -Ene 's#.*(https://[^/]+/([^/]+/[^/.]+)).*#\2#p'
+REPO_PATH=$(git remote -v | grep -m1 '^origin' | sed -Ene 's#.*(https://[^/]+/([^/]+/[^/.]+)).*#\2#p')
 REPO_SSH_URL="git@github.com:$REPO_PATH.git"
 echo "Pushing to $REPO_SSH_URL"
 git remote set-url origin $REPO_SSH_URL
