@@ -1,8 +1,6 @@
 #!/bin/bash
 VERSION_FILE=src/zif_abapgit_version.intf.abap
 
-printenv
-
 git diff-tree --no-commit-id --name-only -r HEAD | grep $VERSION_FILE > /dev/null 2>&1
 if [ $? -ne 0 ]; then
     echo "no version change detected, skipping tag creation"
