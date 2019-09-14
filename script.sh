@@ -1,4 +1,9 @@
 #!/bin/bash
+
+git remote -v
+git remote -v | grep -m1 '^origin'
+git remote -v | grep -m1 '^origin' | sed -Ene 's#.*(https://[^/]+/([^/]+/[^/.]+)).*#\2#p'
+
 VERSION_FILE=src/zif_abapgit_version.intf.abap
 
 git diff-tree --no-commit-id --name-only -r HEAD | grep $VERSION_FILE > /dev/null 2>&1
