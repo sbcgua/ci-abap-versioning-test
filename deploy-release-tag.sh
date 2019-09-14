@@ -18,8 +18,8 @@ if [ $? -ne 0 ]; then
     exit 0
 fi
 
-VERSION_BEFORE=$(echo "$VERSION_DIFF" | grep '^-.\+\b$VERSION_CONSTANT\b' | grep -E -o '[0-9]+\.[0-9]+\.[0-9]+')
-VERSION_AFTER=$(echo "$VERSION_DIFF" | grep '^+.\+\b$VERSION_CONSTANT\b' | grep -E -o '[0-9]+\.[0-9]+\.[0-9]+')
+VERSION_BEFORE=$(echo "$VERSION_DIFF" | grep "^-.\+\b$VERSION_CONSTANT\b" | grep -E -o "[0-9]+\.[0-9]+\.[0-9]+")
+VERSION_AFTER=$(echo "$VERSION_DIFF" | grep "^+.\+\b$VERSION_CONSTANT\b" | grep -E -o "[0-9]+\.[0-9]+\.[0-9]+")
 
 if [ -z $VERSION_BEFORE ] || [ -z $VERSION_AFTER ]; then
     echo "unexpected version parsing error"
