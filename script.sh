@@ -19,7 +19,6 @@ fi
 
 VERSION_BEFORE=$(echo "$VERSION_DIFF" | grep '^-.\+\bgc_abap_version\b' | grep -E -o '[0-9]+\.[0-9]+\.[0-9]+')
 VERSION_AFTER=$(echo "$VERSION_DIFF" | grep '^+.\+\bgc_abap_version\b' | grep -E -o '[0-9]+\.[0-9]+\.[0-9]+')
-VERSION_AFTER="1.89.1"
 
 if [ -z $VERSION_BEFORE ] || [ -z $VERSION_AFTER ]; then
     echo "unexpected version parsing error"
@@ -34,5 +33,8 @@ fi
 
 echo "version change detected [$VERSION_BEFORE > $VERSION_AFTER], creating a new tag ..."
 TAG="v$VERSION_AFTER"
+
+git config user.email "builds@travis-ci.com"
+git config user.name "Travis CI"
 git tag $TAG || exit 1
 git push origin $TAG || exit 1
