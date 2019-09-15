@@ -39,6 +39,9 @@ echo "version change detected [$VERSION_BEFORE > $VERSION_AFTER], creating a new
 
 git config user.email "builds@travis-ci.com"
 git config user.name "Travis CI"
+git tag $TAG || exit 1
+
+# USE SSH DEPLOY KEY
 
 # openssl aes-256-cbc -K $encrypted_d04247868aac_key -iv $encrypted_d04247868aac_iv -in deploy-key.enc -out deploy-key -d
 # chmod 600 deploy-key
@@ -49,9 +52,10 @@ git config user.name "Travis CI"
 # REPO_SSH_URL="git@github.com:$REPO_PATH.git"
 # echo "Pushing to $REPO_SSH_URL"
 # git remote set-url origin $REPO_SSH_URL
+# git push origin $TAG || exit 1
 
-REPO_URL=$(git remote -v | grep -m1 '^origin' | sed -Ene 's#.*(https://[^[:space:]]+).*#\1#p')
-PUSH_URL=$(echo "$REPO_URL" | sed -Ene "s#(https://)#\1$GITHUB_API_KEY@#p")
+# USE GITHUB API TOKEN (less secure ?)
 
-git tag $TAG || exit 1
-git push $PUSH_URL $TAG || exit 1
+# REPO_URL=$(git remote -v | grep -m1 '^origin' | sed -Ene 's#.*(https://[^[:space:]]+).*#\1#p')
+# PUSH_URL=$(echo "$REPO_URL" | sed -Ene "s#(https://)#\1$GITHUB_API_KEY@#p")
+# git push $PUSH_URL $TAG || exit 1
