@@ -30,5 +30,6 @@ jobs:
     needs: test
     steps:
       - uses: "actions/bin/filter@master"
-        args: "branch master"
+        with:
+          args: "branch master"
       - run: echo Hello
