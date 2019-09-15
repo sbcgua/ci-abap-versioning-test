@@ -37,18 +37,21 @@ echo "version change detected [$VERSION_BEFORE > $VERSION_AFTER], creating a new
 
 # DEPLOY
 
-openssl aes-256-cbc -K $encrypted_d04247868aac_key -iv $encrypted_d04247868aac_iv -in deploy-key.enc -out deploy-key -d
-chmod 600 deploy-key
-eval $(ssh-agent -s)
-ssh-add deploy-key
-
 git config user.email "builds@travis-ci.com"
 git config user.name "Travis CI"
 
-REPO_PATH=$(git remote -v | grep -m1 '^origin' | sed -Ene 's#.*(https://[^/]+/([^/]+/[^/.]+)).*#\2#p')
-REPO_SSH_URL="git@github.com:$REPO_PATH.git"
-echo "Pushing to $REPO_SSH_URL"
-git remote set-url origin $REPO_SSH_URL
+# openssl aes-256-cbc -K $encrypted_d04247868aac_key -iv $encrypted_d04247868aac_iv -in deploy-key.enc -out deploy-key -d
+# chmod 600 deploy-key
+# eval $(ssh-agent -s)
+# ssh-add deploy-key
+
+# REPO_PATH=$(git remote -v | grep -m1 '^origin' | sed -Ene 's#.*(https://[^/]+/([^/]+/[^/.]+)).*#\2#p')
+# REPO_SSH_URL="git@github.com:$REPO_PATH.git"
+# echo "Pushing to $REPO_SSH_URL"
+# git remote set-url origin $REPO_SSH_URL
+
+REPO_URL=$(git remote -v | grep -m1 '^origin' | sed -Ene 's#.*(https://[^[:space:]]+).*#\1#p')
+PUSH_URL=$(echo "$REPO_URL" | sed -Ene "s#(https://)#\1$GITHUB_API_KEY@#p")
 
 git tag $TAG || exit 1
-git push origin $TAG || exit 1
+git push $PUSH_URL $TAG || exit 1
