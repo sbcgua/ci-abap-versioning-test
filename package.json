@@ -1,7 +1,7 @@
 {
   "name": "version-test",
   "version": "1.0.0",
-  "description": "",
+  "description": "versioning test",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Test successful\" && exit 0",
