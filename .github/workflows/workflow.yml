@@ -27,7 +27,7 @@ jobs:
   add-tag:
     name: Add a tag on new version
     runs-on: ubuntu-latest
-    need: test
+    needs: test
     steps:
       - uses: "actions/bin/filter@master"
         args: "branch master"
