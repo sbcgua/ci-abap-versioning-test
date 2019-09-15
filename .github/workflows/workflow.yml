@@ -1,0 +1,34 @@
+name: Main workflow
+
+on:
+  pull_request:
+  push:
+    branches:
+      - master
+    # paths:
+    #   - 'package.json'
+  
+
+jobs:
+  test:
+    name: Test code
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+      with:
+        fetch-depth: 1    
+    - uses: actions/setup-node@v1
+      with:
+        node-version: '10.x'
+    - run: |
+        npm install
+        npm test
+
+  add-tag:
+    name: Add a tag on new version
+    runs-on: ubuntu-latest
+    need: test
+    steps:
+      - uses: "actions/bin/filter@master"
+        args: "branch master"
+      - run: echo Hello
