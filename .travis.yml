@@ -4,6 +4,9 @@ language: minimal
 #  - "12"
 notifications:
   email: false
+branches:
+  only: 
+    - master
 script:
   - echo Hello
 deploy:
