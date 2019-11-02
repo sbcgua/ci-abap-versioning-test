@@ -16,7 +16,7 @@ VERSION_FILE=$DEPLOY_VERSION_FILE
 VERSION_CONSTANT=$DEPLOY_VERSION_CONST
 
 if [ -z $VERSION_FILE ] || [ -z $VERSION_CONSTANT ]; then
-    echo "version file or constant were not specified"
+    echo "Version file or constant were not specified"
     echo "  file:" $VERSION_FILE
     echo "  const:" $VERSION_CONSTANT
     echo "Usage: deploy.sh <version_file_path> <version_constant>"
@@ -25,7 +25,7 @@ fi
 
 git diff-tree --no-commit-id --name-only -r HEAD | grep $VERSION_FILE > /dev/null 2>&1
 if [ $? -ne 0 ]; then
-    echo "no version change detected, skipping tag creation"
+    echo "No version change detected, skipping tag creation"
     exit 0
 fi
 
@@ -33,7 +33,7 @@ VERSION_DIFF=$(git diff HEAD^:$VERSION_FILE HEAD:$VERSION_FILE)
 
 echo "$VERSION_DIFF" | grep $VERSION_CONSTANT > /dev/null 2>&1
 if [ $? -ne 0 ]; then
-    echo "no version change detected, skipping tag creation"
+    echo "No version change detected, skipping tag creation"
     exit 0
 fi
 
@@ -41,18 +41,18 @@ VERSION_BEFORE=$(echo "$VERSION_DIFF" | grep "^-.\+\b$VERSION_CONSTANT\b" | grep
 VERSION_AFTER=$(echo "$VERSION_DIFF" | grep "^+.\+\b$VERSION_CONSTANT\b" | grep -E -o "[0-9]+\.[0-9]+\.[0-9]+")
 
 if [ -z $VERSION_BEFORE ] || [ -z $VERSION_AFTER ]; then
-    echo "unexpected version parsing error"
+    echo "Unexpected version parsing error"
     echo "$VERSION_DIFF" | grep $VERSION_CONSTANT
     exit 1
 fi
 
 if [ $VERSION_BEFORE = $VERSION_AFTER ]; then
-    echo "no version change detected, skipping tag creation"
+    echo "No version change detected, skipping tag creation"
     exit 0
 fi
 
 TAG="v$VERSION_AFTER"
-echo "version change detected [$VERSION_BEFORE > $VERSION_AFTER], creating a new tag ..."
+echo "Version change detected [$VERSION_BEFORE > $VERSION_AFTER], creating a new tag ..."
 
 # DEPLOY
 
