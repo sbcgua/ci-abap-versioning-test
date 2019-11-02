@@ -1,8 +1,16 @@
 #!/bin/bash
 echo "Detecting version change ..."
 
-VERSION_FILE=src/zif_abapgit_version.intf.abap
-VERSION_CONSTANT=gc_abap_version
+VERSION_FILE=$1
+VERSION_CONSTANT=$2
+
+if [ -z $VERSION_FILE ] || [ -z $VERSION_CONSTANT ]; then
+    echo "version file or constant were not specified"
+    echo "file:" $VERSION_FILE
+    echo "const:" $VERSION_CONSTANT
+    echo "Usage: deploy.sh <version_file_path> <version_constant>"
+    exit 1
+fi
 
 git diff-tree --no-commit-id --name-only -r HEAD | grep $VERSION_FILE > /dev/null 2>&1
 if [ $? -ne 0 ]; then
@@ -43,16 +51,17 @@ git tag $TAG || exit 1
 
 # USE SSH DEPLOY KEY
 
-# openssl aes-256-cbc -K $encrypted_d04247868aac_key -iv $encrypted_d04247868aac_iv -in deploy-key.enc -out deploy-key -d
-# chmod 600 deploy-key
-# eval $(ssh-agent -s)
-# ssh-add deploy-key
+mkdir -p .ssh
+openssl aes-256-cbc -K $encrypted_d04247868aac_key -iv $encrypted_d04247868aac_iv -in deploy-key.enc -out .ssh/deploy-key -d
+chmod 600 .ssh/deploy-key
+eval $(ssh-agent -s)
+ssh-add .ssh/deploy-key
 
-# REPO_PATH=$(git remote -v | grep -m1 '^origin' | sed -Ene 's#.*(https://[^/]+/([^/]+/[^/.]+)).*#\2#p')
-# REPO_SSH_URL="git@github.com:$REPO_PATH.git"
-# echo "Pushing to $REPO_SSH_URL"
-# git remote set-url origin $REPO_SSH_URL
-# git push origin $TAG || exit 1
+REPO_PATH=$(git remote -v | grep -m1 '^origin' | sed -Ene 's#.*(https://[^/]+/([^/]+/[^/.]+)).*#\2#p')
+REPO_SSH_URL="git@github.com:$REPO_PATH.git"
+echo "Pushing to $REPO_SSH_URL"
+git remote set-url origin $REPO_SSH_URL
+git push origin $TAG || exit 1
 
 # USE GITHUB API TOKEN (less secure ?)
 

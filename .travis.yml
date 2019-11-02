@@ -11,8 +11,7 @@ script:
   - echo Hello
 deploy:
   provider: script
-  script: ./deploy-release-tag.sh
-  skip_cleanup: true
+  script: ./deploy-release-tag.sh src/zif_abapgit_version.intf.abap gc_abap_version
   on:
     branch: master
     tags: false
