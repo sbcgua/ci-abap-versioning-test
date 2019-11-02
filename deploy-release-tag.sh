@@ -8,7 +8,7 @@ fi
 if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then
     echo "Deployment disabled for pull requests"
     exit 1
-else
+fi
 
 echo "Detecting version change ..."
 
