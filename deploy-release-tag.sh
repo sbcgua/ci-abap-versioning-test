@@ -1,13 +1,24 @@
 #!/bin/bash
+echo "Checking environment and targets ..."
+
+if [ "$TRAVIS_BRANCH" != "master" ]; then
+    echo "Deployment for master only"
+    exit 1
+fi
+if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then
+    echo "Deployment disabled for pull requests"
+    exit 1
+else
+
 echo "Detecting version change ..."
 
-VERSION_FILE=$1
-VERSION_CONSTANT=$2
+VERSION_FILE=$DEPLOY_VERSION_FILE
+VERSION_CONSTANT=$DEPLOY_VERSION_CONST
 
 if [ -z $VERSION_FILE ] || [ -z $VERSION_CONSTANT ]; then
     echo "version file or constant were not specified"
-    echo "file:" $VERSION_FILE
-    echo "const:" $VERSION_CONSTANT
+    echo "  file:" $VERSION_FILE
+    echo "  const:" $VERSION_CONSTANT
     echo "Usage: deploy.sh <version_file_path> <version_constant>"
     exit 1
 fi
@@ -51,8 +62,13 @@ git tag $TAG || exit 1
 
 # USE SSH DEPLOY KEY
 
+ENCRYPTED_KEY_VAR=encrypted_${ENCRYPTION_LABEL}_key
+ENCRYPTED_IV_VAR=encrypted_${ENCRYPTION_LABEL}_iv
+ENCRYPTED_KEY=${!ENCRYPTED_KEY_VAR}
+ENCRYPTED_IV=${!ENCRYPTED_IV_VAR}
+
 mkdir -p .ssh
-openssl aes-256-cbc -K $encrypted_d04247868aac_key -iv $encrypted_d04247868aac_iv -in deploy-key.enc -out .ssh/deploy-key -d
+openssl aes-256-cbc -K $ENCRYPTED_KEY -iv $ENCRYPTED_IV -in deploy-key.enc -out .ssh/deploy-key -d
 chmod 600 .ssh/deploy-key
 eval $(ssh-agent -s)
 ssh-add .ssh/deploy-key
