@@ -13,3 +13,4 @@ Test test
 document.getElementById("text").innerHTML = "Text added by JavaScript code";
 </script>
 <script src="./demo.js"></script>
+{% include form.html %}
