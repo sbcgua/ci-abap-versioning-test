@@ -1,1 +1,1 @@
-document.getElementById("text").innerHTML = "And this one too";
+document.getElementById("text2").innerHTML = "And this one too";
