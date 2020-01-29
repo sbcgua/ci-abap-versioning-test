@@ -1,4 +1,4 @@
-# ABAP package version shield
+<!-- # ABAP package version shield -->
 
 Test test
 
@@ -8,9 +8,18 @@ Nulla sed neque ac est vulputate pulvinar. Quisque a ex laoreet, blandit libero 
 
 Nullam fringilla finibus commodo. Mauris convallis eget urna vitae posuere. Sed eu gravida orci, pulvinar convallis eros. Vivamus velit ex, tristique et convallis cursus, ultrices at velit. Vestibulum interdum venenatis nisl eu fringilla. Phasellus porta mattis tempor. Ut interdum dictum leo, vitae convallis lacus venenatis nec. Sed et ex justo. Duis volutpat elit quis mi maximus consequat. Fusce varius eleifend elit, ac hendrerit purus condimentum eu.
 
-Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec in rutrum erat. Aliquam erat volutpat. Donec non libero mollis, faucibus lacus et, rhoncus turpis. Praesent consectetur dui purus, nec iaculis urna semper et. Donec blandit purus et imperdiet placerat. Mauris tempus nec est ac molestie. Nulla nec neque vitae orci iaculis pellentesque id consectetur ipsum. Morbi magna ex, mollis ac porta lobortis, tempus eu metus. Suspendisse mattis eget purus nec semper. Etiam luctus posuere nibh eu porttitor. Cras sed placerat turpis.
+```
+![abap package version](https://img.shields.io/endpoint?url=https://shield.abap.space/version-shield-json/$TYPE/$OWNER/$REPO/$PATH/$CONSTANT_NAME)
+```
 
-Pellentesque in diam sed odio tristique vehicula ac ac erat. Nam non orci a eros venenatis vulputate. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse potenti. Etiam eget tristique diam. Vivamus consectetur ante non maximus accumsan. Proin felis eros, aliquet vitae arcu et, ullamcorper maximus sem. Morbi placerat et tortor sed accumsan. Aenean rutrum, ante vitae cursus imperdiet, ex ex sagittis dolor, id auctor lectus dui quis diam. Pellentesque sit amet accumsan est. Sed tristique porta lectus, eu porttitor urna. Nullam et maximus felis. Sed erat tortor, ultrices sed ante tempus, molestie volutpat felis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
+where:
+- $TYPE = 'github' (only this for now)
+- $OWNER = your github user name
+- $REPO = you repo name
+- $PATH = path to abap file with version constant
+- $CONSTANT_NAME = constant name to search version in (optional, "version" by default)
+
+For example: [`https://img.shields.io/endpoint?url=https://shield.abap.space/version-shield-json/github/sbcgua/mockup_loader/src/zif_mockup_loader_constants.intf.abap/version`](https://img.shields.io/endpoint?url=https://shield.abap.space/version-shield-json/github/sbcgua/mockup_loader/src/zif_mockup_loader_constants.intf.abap/version)
 
 <!-- <script
   src="https://code.jquery.com/jquery-3.4.1.min.js"
