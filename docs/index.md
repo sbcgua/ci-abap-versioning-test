@@ -1,12 +1,10 @@
-<!-- # ABAP package version shield -->
+# ABAP package version shield
 
 Test test
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus id odio non orci ultricies egestas. Phasellus laoreet ornare urna, ac facilisis ligula porttitor eu. Curabitur gravida nibh vel dolor fringilla scelerisque. Nam non justo justo. Maecenas tempus blandit pellentesque. Fusce facilisis malesuada turpis, vel laoreet mi ultricies et. Donec eget consectetur ante. Duis et enim id massa tincidunt facilisis dictum sit amet felis. Quisque vitae eros pharetra, lobortis mi ac, eleifend erat. Integer luctus massa et ultrices elementum. Aliquam fringilla faucibus risus, in maximus velit laoreet et. Ut id ornare nulla.
 
 Nulla sed neque ac est vulputate pulvinar. Quisque a ex laoreet, blandit libero et, commodo erat. Suspendisse pulvinar rhoncus erat, ac euismod augue fermentum a. Cras fermentum leo mi, a consectetur lectus consectetur ut. Morbi quis laoreet arcu. Vivamus sit amet ultricies diam, ut laoreet risus. Vivamus euismod volutpat ullamcorper. Nullam vitae scelerisque velit. Sed gravida risus congue augue ultrices auctor. Maecenas euismod lorem quis nunc tempor luctus. Aenean vel turpis arcu. Sed nec ante augue. Vivamus euismod non odio at auctor. Integer sit amet bibendum urna.
-
-Nullam fringilla finibus commodo. Mauris convallis eget urna vitae posuere. Sed eu gravida orci, pulvinar convallis eros. Vivamus velit ex, tristique et convallis cursus, ultrices at velit. Vestibulum interdum venenatis nisl eu fringilla. Phasellus porta mattis tempor. Ut interdum dictum leo, vitae convallis lacus venenatis nec. Sed et ex justo. Duis volutpat elit quis mi maximus consequat. Fusce varius eleifend elit, ac hendrerit purus condimentum eu.
 
 ```
 ![abap package version](https://img.shields.io/endpoint?url=https://shield.abap.space/version-shield-json/$TYPE/$OWNER/$REPO/$PATH/$CONSTANT_NAME)
@@ -33,5 +31,7 @@ document.getElementById("text").innerHTML = "Text added by JavaScript code";
 </script> -->
 
 ## Badge constructor
+
+*beta, pls report issue if any!*
 
 {% include form.html %}
