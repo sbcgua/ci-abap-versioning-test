@@ -2,7 +2,17 @@
 
 Test test
 
-<script
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus id odio non orci ultricies egestas. Phasellus laoreet ornare urna, ac facilisis ligula porttitor eu. Curabitur gravida nibh vel dolor fringilla scelerisque. Nam non justo justo. Maecenas tempus blandit pellentesque. Fusce facilisis malesuada turpis, vel laoreet mi ultricies et. Donec eget consectetur ante. Duis et enim id massa tincidunt facilisis dictum sit amet felis. Quisque vitae eros pharetra, lobortis mi ac, eleifend erat. Integer luctus massa et ultrices elementum. Aliquam fringilla faucibus risus, in maximus velit laoreet et. Ut id ornare nulla.
+
+Nulla sed neque ac est vulputate pulvinar. Quisque a ex laoreet, blandit libero et, commodo erat. Suspendisse pulvinar rhoncus erat, ac euismod augue fermentum a. Cras fermentum leo mi, a consectetur lectus consectetur ut. Morbi quis laoreet arcu. Vivamus sit amet ultricies diam, ut laoreet risus. Vivamus euismod volutpat ullamcorper. Nullam vitae scelerisque velit. Sed gravida risus congue augue ultrices auctor. Maecenas euismod lorem quis nunc tempor luctus. Aenean vel turpis arcu. Sed nec ante augue. Vivamus euismod non odio at auctor. Integer sit amet bibendum urna.
+
+Nullam fringilla finibus commodo. Mauris convallis eget urna vitae posuere. Sed eu gravida orci, pulvinar convallis eros. Vivamus velit ex, tristique et convallis cursus, ultrices at velit. Vestibulum interdum venenatis nisl eu fringilla. Phasellus porta mattis tempor. Ut interdum dictum leo, vitae convallis lacus venenatis nec. Sed et ex justo. Duis volutpat elit quis mi maximus consequat. Fusce varius eleifend elit, ac hendrerit purus condimentum eu.
+
+Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec in rutrum erat. Aliquam erat volutpat. Donec non libero mollis, faucibus lacus et, rhoncus turpis. Praesent consectetur dui purus, nec iaculis urna semper et. Donec blandit purus et imperdiet placerat. Mauris tempus nec est ac molestie. Nulla nec neque vitae orci iaculis pellentesque id consectetur ipsum. Morbi magna ex, mollis ac porta lobortis, tempus eu metus. Suspendisse mattis eget purus nec semper. Etiam luctus posuere nibh eu porttitor. Cras sed placerat turpis.
+
+Pellentesque in diam sed odio tristique vehicula ac ac erat. Nam non orci a eros venenatis vulputate. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse potenti. Etiam eget tristique diam. Vivamus consectetur ante non maximus accumsan. Proin felis eros, aliquet vitae arcu et, ullamcorper maximus sem. Morbi placerat et tortor sed accumsan. Aenean rutrum, ante vitae cursus imperdiet, ex ex sagittis dolor, id auctor lectus dui quis diam. Pellentesque sit amet accumsan est. Sed tristique porta lectus, eu porttitor urna. Nullam et maximus felis. Sed erat tortor, ultrices sed ante tempus, molestie volutpat felis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
+
+<!-- <script
   src="https://code.jquery.com/jquery-3.4.1.min.js"
   integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
   crossorigin="anonymous"></script>
@@ -11,6 +21,8 @@ Test test
 <div id="text3"></div>
 <script>
 document.getElementById("text").innerHTML = "Text added by JavaScript code";
-</script>
+</script> -->
+
+## Badge constructor
+
 {% include form.html %}
-<script src="./demo.js"></script>

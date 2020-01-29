@@ -1,2 +1,15 @@
-<h1>Hello from includes !</h1>
-<div id="textInc"></div>
+<style>
+    #constructorResult {
+        color: red;
+    }
+</style>
+<div id="constructor">
+    <form id="constructorForm">
+        <input type='text' name='repo_path' placeholder="repo path: owner/repo">
+        <input type='text' name='file_path' placeholder="file path: src/zif...abap">
+        <input type='text' name='const_name' placeholder="const name: version (optional)">
+        <input type="button" value="Build" id="constructorSubmit">
+    </form>
+    <div id="constructorResult">hello</div>
+</div>
+<script src="../demo.js"></script>
