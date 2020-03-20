@@ -23,6 +23,7 @@ jobs:
     - run: |
         npm install
         npm test
+    - run: curl --version
 
   add-tag:
     name: Add a tag on new version
